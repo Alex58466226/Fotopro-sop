@@ -3,259 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotopro 全球发货装箱操作指南 (SOP)</title>
+    <title>Fotopro 运营文件索引中心</title>
     <!-- 引入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 使用 Inter 或系统默认的无衬线字体，并确保中文友好 */
         body {
             font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            background-color: #f3f4f6; /* 浅灰色背景 */
-        }
-        .container {
-            max-width: 1200px;
-        }
-        .red-line-card {
-            border-left: 6px solid #ef4444; /* 红色左边框作为警示 */
-        }
-        .section-title {
-            border-bottom: 3px solid #f97316; /* 橙色底线 */
-        }
-        /* 响应式表格优化 */
-        .responsive-table-container {
-            overflow-x: auto;
-        }
-        .table-header {
-            background-color: #1f2937;
-            color: white;
+            background-color: #f3f4f6;
         }
     </style>
 </head>
-<body>
-
-    <div class="container mx-auto p-4 sm:p-8">
-
-        <!-- 核心目标区域 -->
-        <header class="text-center mb-10 bg-white p-6 rounded-xl shadow-lg">
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+        
+        <header class="text-center mb-12 bg-white p-6 rounded-xl shadow-lg border-b-4 border-orange-500">
             <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2">
-                📦 Fotopro 全球发货装箱操作指南 (SOP)
+                📘 Fotopro 运营文件索引中心
             </h1>
-            <p class="text-xl sm:text-2xl font-semibold text-orange-600">
-                核心目标： 严控尺寸 (不超长) / 严控重量 (不超重) / 极致密度 (省运费)
+            <p class="text-lg text-gray-600">
+                请选择您需要查阅的标准化操作指南 (SOP)
             </p>
         </header>
 
-        <!-- 🛑 一、 三大“红线” (严禁触犯) -->
-        <section class="mb-12">
-            <h2 class="section-title text-2xl font-bold text-gray-800 mb-6 pb-2">
-                🛑 一、 三大“红线” (严禁触犯)
-            </h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- 红线 1：日本限重 -->
-                <div class="p-5 bg-red-100 text-red-800 rounded-xl shadow-md red-line-card">
-                    <h3 class="text-xl font-bold mb-2">红线 1：日本限重</h3>
-                    <p class="font-bold text-2xl mb-3">> 15 kg</p>
-                    <p><strong>后果：</strong> 拒收/退运</p>
-                    <p class="mt-2 text-sm"><strong>操作指令：</strong> 发往 <span class="font-extrabold">日本 (JP)</span> 的货物，单箱严禁超过 15kg！超重必须拆箱。</p>
-                </div>
-                <!-- 红线 2：专线限长 -->
-                <div class="p-5 bg-yellow-100 text-yellow-800 rounded-xl shadow-md red-line-card">
-                    <h3 class="text-xl font-bold mb-2">红线 2：专线限长</h3>
-                    <p class="font-bold text-2xl mb-3">> 60 cm</p>
-                    <p><strong>后果：</strong> 高额罚款</p>
-                    <p class="mt-2 text-sm"><strong>操作指令：</strong> Pro/Air 系列外箱<span class="font-extrabold">严禁超 60cm</span>。如超标，检查是否封箱鼓起。</p>
-                </div>
-                <!-- 红线 3：人体工学 -->
-                <div class="p-5 bg-red-100 text-red-800 rounded-xl shadow-md red-line-card">
-                    <h3 class="text-xl font-bold mb-2">红线 3：人体工学</h3>
-                    <p class="font-bold text-2xl mb-3">> 22.5 kg</p>
-                    <p><strong>后果：</strong> 入库延迟</p>
-                    <p class="mt-2 text-sm"><strong>操作指令：</strong> 发往 <span class="font-extrabold">欧美 (US/EU)</span> 的货物，单箱超过 22.5kg 必须贴 Team Lift (多人搬运) 标签。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 📋 二、 各系列产品装箱标准表 (Packing Specs) -->
-        <section class="mb-12">
-            <h2 class="section-title text-2xl font-bold text-gray-800 mb-6 pb-2">
-                📋 二、 各系列产品装箱标准表 (Packing Specs)
-            </h2>
-            <p class="text-gray-600 mb-4">请根据产品系列（Series）选择对应的纸箱和装箱数量：</p>
-
-            <div class="grid lg:grid-cols-2 gap-6">
-                <!-- XAir / X-Go 系列 -->
-                <div class="bg-white p-5 rounded-xl shadow-lg border-t-4 border-blue-500">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3">1. XAir / X-Go (旅行反折系列)</h3>
-                    <p class="mb-3 text-sm italic">特征： 收纳短，体积小。目标： 卡住 Amazon “小号标准件” (最长边 < 45cm)。</p>
-                    <div class="space-y-2">
-                        <p><strong>内盒限制：</strong> 长 < 44 cm (<span class="text-red-500">必须压紧彩盒，确保不鼓包</span>)</p>
-                        <p><strong>外箱尺寸：</strong> 46 x 57 x 24 cm (使用硬度高的 BC坑 纸箱)</p>
-                        <p><strong>装箱数量：</strong> <span class="font-extrabold text-lg">10 PCS</span> (排列： 5个一排 x 2层)</p>
-                        <p><strong>单箱毛重：</strong> 约 16.0 kg (<span class="text-green-600 font-bold">完美符合美/欧/日所有标准！</span>)</p>
-                    </div>
-                </div>
-
-                <!-- Pro / Carbon 系列 -->
-                <div class="bg-white p-5 rounded-xl shadow-lg border-t-4 border-purple-500">
-                    <h3 class="text-xl font-bold text-purple-700 mb-3">2. Pro / Carbon (专业中轴系列)</h3>
-                    <p class="mb-3 text-sm italic">特征： 收纳稍长，轻量化。目标： 密度最大化，实重 > 体积重。</p>
-                    <div class="responsive-table-container">
-                        <table class="min-w-full text-sm">
-                            <thead>
-                                <tr class="table-header">
-                                    <th class="p-2 text-left">区域</th>
-                                    <th class="p-2 text-left">装箱数量</th>
-                                    <th class="p-2 text-left">外箱尺寸</th>
-                                    <th class="p-2 text-left">单箱毛重</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="p-2">全球通用 (US/EU)</td>
-                                    <td class="p-2 text-purple-600 font-bold">8 PCS (推荐)</td>
-                                    <td class="p-2">57 x 54 x 28 cm</td>
-                                    <td class="p-2">约 15.6 kg</td>
-                                </tr>
-                                <tr class="bg-purple-50">
-                                    <td class="p-2">日本专用 (JP)</td>
-                                    <td class="p-2 text-red-600 font-bold">6 PCS (强制)</td>
-                                    <td class="p-2">57 x 41 x 28 cm</td>
-                                    <td class="p-2">约 11.8 kg</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="mt-3 text-sm"><strong>操作要求：</strong> 首尾交错法装箱。严禁最长边超过 60cm。</p>
-                </div>
-
-                <!-- Eagle / Video 系列 -->
-                <div class="bg-white p-5 rounded-xl shadow-lg border-t-4 border-yellow-500">
-                    <h3 class="text-xl font-bold text-yellow-700 mb-3">3. Eagle / Video (重型长焦系列)</h3>
-                    <p class="mb-3 text-sm italic">特征： 超长、重、易损。目标： 保护产品，避免变成“超大件”。</p>
-                    <div class="space-y-2">
-                        <p><strong>内盒限制：</strong> 长 < 90 cm (<span class="text-orange-500">云台太大需拆下单独塞在脚管空隙里包装</span>)</p>
-                        <p><strong>外箱尺寸：</strong> 92 x 38 x 38 cm (使用 <span class="font-extrabold">双坑/加硬</span> 纸箱)</p>
-                        <p><strong>装箱数量：</strong> <span class="font-extrabold text-lg">4 PCS</span> (排列： 2个一排 x 2层)</p>
-                        <p><strong>单箱毛重：</strong> 约 15 - 18 kg (<span class="text-red-500">严禁装 6 个，太重易摔坏</span>)</p>
-                    </div>
-                </div>
-
-                <!-- 配件 (Accessories) -->
-                <div class="bg-white p-5 rounded-xl shadow-lg border-t-4 border-green-500">
-                    <h3 class="text-xl font-bold text-green-700 mb-3">4. 配件 (Accessories)</h3>
-                    <p class="mb-3 text-sm italic">特征： 手机夹、快装板、云台。</p>
-                    <div class="space-y-2">
-                        <p><strong>装箱数量：</strong> <span class="font-extrabold text-lg">50 - 100 PCS</span> (<span class="text-green-600">塞满，不要留空隙</span>)</p>
-                        <p><strong>外箱尺寸：</strong> 40 x 30 x 30 cm (推荐使用标准 12号/13号 纸箱)</p>
-                        <p><strong>单箱毛重：</strong> < 15 kg (控制总重)</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 🛠️ 三、 打包手法图解 (Visual Guide) -->
-        <section class="mb-12">
-            <h2 class="section-title text-2xl font-bold text-gray-800 mb-6 pb-2">
-                🛠️ 三、 打包手法图解 (Visual Guide)
-            </h2>
+        <main class="space-y-6">
             
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <!-- 首尾交错法 -->
-                <div class="p-5 bg-white rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-700 mb-3">1. 首尾交错法 (Head-to-Tail)</h3>
-                    <p class="text-sm mb-3">适用： Pro / Carbon 系列 (8只装) | 目的： 压缩体积，防止箱子太宽。</p>
-                    <ul class="list-disc list-inside space-y-1 text-gray-600">
-                        <li>第 1 支：云台朝左</li>
-                        <li>第 2 支：云台朝右</li>
-                        <li>...依次类推，利用脚管较细的空间互补。</li>
-                    </ul>
-                    <div class="mt-4 text-center">
-                        
+            <!-- 索引卡片 1: 已完成的 SOP -->
+            <a href="fotopro_packing_sop.html" class="block">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border-l-8 border-indigo-500 flex items-center justify-between">
+                    <div>
+                        <span class="text-sm font-semibold text-indigo-600">物流/仓储 SOP</span>
+                        <h2 class="text-xl font-bold text-gray-800 mt-1">
+                            📦 Fotopro 全球发货装箱操作指南 (SOP)
+                        </h2>
+                        <p class="text-gray-500 text-sm mt-1">
+                            核心：严控尺寸、重量，极致密度。
+                        </p>
                     </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-indigo-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
                 </div>
-                
-                <!-- 立式装箱 vs 平铺装箱 -->
-                <div class="p-5 bg-white rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-700 mb-3">2. 立式装箱 vs 平铺装箱</h3>
-                    <p class="text-lg font-bold text-red-500">指令： Fotopro 脚架一律采用 <span class="underline">平铺 (Flat Lay)</span>。</p>
-                    <p class="text-sm mt-1 text-gray-600">原因： 立式装箱容易导致箱子高度 > 60cm，在传输带上容易倒，且会被物流商收取超长费。</p>
-                    <div class="mt-4 text-center">
-                        
-                    </div>
-                </div>
+            </a>
+
+            <!-- 索引卡片 2: 待完善的 SOP (示例) -->
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-gray-300 opacity-60">
+                <span class="text-sm font-semibold text-gray-500">产品/内容 SOP</span>
+                <h2 class="text-xl font-bold text-gray-500 mt-1">
+                    📷 新品拍摄与上线标准 (待完善)
+                </h2>
+                <p class="text-gray-400 text-sm mt-1">
+                    要求：主图、A+、视频拍摄质量及文案规范。
+                </p>
             </div>
 
-            <!-- 标签粘贴规范 -->
-            <div class="p-5 bg-indigo-50 rounded-xl shadow-lg">
-                <h3 class="text-xl font-bold text-indigo-700 mb-3">3. 标签粘贴规范 (Labeling)</h3>
-                <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li><strong>FBA 标 (FNSKU)：</strong> 贴在彩盒条码处，覆盖原条码。</li>
-                    <li><strong>外箱标 (Shipping Label)：</strong> 每个外箱贴 2 张（侧面 + 顶面）。</li>
-                    <li><strong>日本线：</strong> 必须贴 “Made in China” 标签。</li>
-                    <li><strong>超重箱 (>15kg)：</strong> 必须贴 “Heavy Package” 或 “Team Lift” 警示标 (<span class="font-extrabold text-red-500">黄底黑字</span>)。</li>
-                </ul>
+            <!-- 索引卡片 3: 待完善的 SOP (示例) -->
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-gray-300 opacity-60">
+                <span class="text-sm font-semibold text-gray-500">客服/售后 SOP</span>
+                <h2 class="text-xl font-bold text-gray-500 mt-1">
+                    💸 亚马逊退货处理流程 (待完善)
+                </h2>
+                <p class="text-gray-400 text-sm mt-1">
+                    标准：退款比例、判定依据、与 FBA 沟通规范。
+                </p>
             </div>
-        </section>
+            
+        </main>
 
-        <!-- ⚖️ 四、 关于“21kg 起计费”的现场解释 -->
-        <section class="mb-12">
-            <h2 class="section-title text-2xl font-bold text-gray-800 mb-6 pb-2">
-                ⚖️ 四、 关于“21kg 起计费”的现场解释
-            </h2>
-            <div class="bg-yellow-50 p-6 rounded-xl shadow-md border border-yellow-300">
-                <p class="text-lg font-bold mb-3 text-gray-800">问：“发美国为了凑 21kg 运费优惠，我要不要硬塞 12 个脚架进一个箱子？”</p>
-                <p class="text-xl font-extrabold text-red-600 mb-4">答： 不要！绝对不要！</p>
-                
-                <h4 class="font-semibold text-gray-700">风险分析：</h4>
-                <ul class="list-disc list-inside ml-4 text-gray-600 mb-4">
-                    <li>硬塞会导致箱子变成巨无霸（超长+超重）。</li>
-                    <li>FBA 会拒收，或者收取 $50 罚款。</li>
-                </ul>
-
-                <h4 class="font-semibold text-gray-700">正确做法（整票交货凑重）：</h4>
-                <div class="bg-white p-4 rounded-lg mt-2 text-sm text-gray-700">
-                    <p>我们通过 <span class="font-extrabold text-blue-600">“整票交货”</span> 来凑重。</p>
-                    <p>例： 把 10 箱脚架 (每箱15kg) 和 5 箱云台 (每箱20kg) 一起交给货代。</p>
-                    <p>总重量 = 150kg + 100kg = 250kg。</p>
-                    <p><span class="font-extrabold">结果：</span> 总重量 > 21kg，全票都能享受大货优惠价。不需要单箱拼命塞。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 🖨️ 打印检查单 (Checklist before Shipping) -->
-        <section class="mb-12">
-            <h2 class="section-title text-2xl font-bold text-gray-800 mb-6 pb-2">
-                🖨️ 打印检查单 (Checklist before Shipping)
-            </h2>
-            <div class="bg-green-50 p-6 rounded-xl shadow-md border-2 border-green-300">
-                <ul class="space-y-3 text-lg font-medium text-gray-700">
-                    <li class="flex items-center">
-                        <input type="checkbox" class="h-5 w-5 text-green-600 rounded mr-3" id="check1">
-                        <label for="check1"><strong>量尺寸：</strong> 随机抽取一箱，测量最长边是否鼓包超过 <span class="text-red-500">60cm</span>？</label>
-                    </li>
-                    <li class="flex items-center">
-                        <input type="checkbox" class="h-5 w-5 text-green-600 rounded mr-3" id="check2">
-                        <label for="check2"><strong>称重：</strong> 发往日本的箱子，是否全部 <span class="text-red-500">< 15.0kg</span>？</label>
-                    </li>
-                    <li class="flex items-center">
-                        <input type="checkbox" class="h-5 w-5 text-green-600 rounded mr-3" id="check3">
-                        <label for="check3"><strong>摇晃：</strong> 封箱后摇晃箱子，是否有明显晃动声？(如有，需加气泡膜填充)</label>
-                    </li>
-                    <li class="flex items-center">
-                        <input type="checkbox" class="h-5 w-5 text-green-600 rounded mr-3" id="check4">
-                        <label for="check4"><strong>标贴：</strong> 混装发货时，是否有明显区分 Air系列 和 Pro系列 的外箱标记？</label>
-                    </li>
-                </ul>
-                <p class="mt-5 text-sm italic text-gray-500">勾选所有项目后方可放行。</p>
-            </div>
-        </section>
-
-        <!-- 页脚 -->
-        <footer class="text-center mt-10 p-4 text-gray-500 text-sm border-t">
-            &copy; Fotopro 装箱作业部。版本 V1.0 - 持续优化中。
+        <footer class="text-center mt-12 pt-4 border-t text-gray-500 text-sm">
+            © Fotopro 运营部文件中心。
         </footer>
     </div>
-
 </body>
 </html>
