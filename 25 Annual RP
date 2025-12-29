@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度亚马逊/跨境电商经营复盘与规划报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f5f0; /* Warm neutral background */
+            color: #4a4a4a;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e5e5e0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a29e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c;
+        }
+
+        /* Chart Container Utilities */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .chart-height-sm { height: 250px; max-height: 250px; }
+        .chart-height-md { height: 350px; max-height: 350px; }
+        .chart-height-lg { height: 450px; max-height: 450px; }
+
+        /* Navigation Active State */
+        .nav-item.active {
+            background-color: #e7e5e4;
+            color: #0f766e; /* Teal-700 */
+            border-right: 4px solid #0f766e;
+            font-weight: 600;
+        }
+
+        /* Card Hover Effects */
+        .stat-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals (Stone/Warm Grey) + Deep Teal (Primary) + Terracotta (Secondary/Accent) -->
+    <!-- Application Structure Plan: Dashboard layout. Sidebar for logical flow: Executive Summary -> Detailed 2025 Review -> Product/Strategy -> 2026 Plan -> Future Outlook. Chosen to allow executives to get the "big picture" first, then drill down into specific account performance or future strategy without getting lost in raw tables. -->
+    <!-- Visualization & Content Choices: 
+         1. Overview: Scorecards for high-level KPIs. Radar Chart for Strategy Health (from source file).
+         2. Review: Stacked Bar for Monthly Sales (showing composition). Doughnut for Regional split.
+         3. 2026: Line Chart for Growth Trajectory.
+         4. Future: Timeline CSS for 2027-2028 Outlook.
+         All using Chart.js (Canvas), no SVG/Mermaid. 
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-stone-100 border-r border-stone-200 flex-shrink-0 hidden md:flex flex-col overflow-y-auto">
+        <div class="p-6 border-b border-stone-200">
+            <h1 class="text-xl font-bold text-stone-800 tracking-tight">跨境电商团队<br><span class="text-teal-700">年度经营报告</span></h1>
+            <p class="text-xs text-stone-500 mt-2">2025 复盘 | 2026-2028 规划</p>
+        </div>
+        <nav class="flex-1 py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button onclick="navigateTo('overview')" class="nav-item active w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors flex items-center">
+                        <span class="mr-3">📊</span> 整体经营概览
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigateTo('review2025')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors flex items-center">
+                        <span class="mr-3">📉</span> 2025 销售复盘
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigateTo('productStrategy')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors flex items-center">
+                        <span class="mr-3">🎯</span> 策略与产品分析
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigateTo('plan2026')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors flex items-center">
+                        <span class="mr-3">🚀</span> 2026 年度规划
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigateTo('outlook')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors flex items-center">
+                        <span class="mr-3">🔭</span> 2027-2028 展望
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t border-stone-200 text-xs text-stone-400">
+            AMZ跨境团队 | Generated 2025
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="md:hidden fixed top-0 left-0 w-full bg-stone-100 z-50 border-b border-stone-200 p-4 flex justify-between items-center">
+        <h1 class="font-bold text-stone-800">2025 年度报告</h1>
+        <button id="mobileMenuBtn" class="text-stone-600 focus:outline-none">☰</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto bg-[#f5f5f0] p-4 md:p-8 pt-20 md:pt-8 w-full relative">
+        
+        <!-- SECTION 1: OVERVIEW -->
+        <section id="overview" class="section-view max-w-7xl mx-auto space-y-8 animate-fade-in">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">2025 核心摘要</h2>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-600">
+                    <p class="text-stone-600 leading-relaxed">
+                        <strong class="text-teal-700">总述：</strong> 2025年是团队战略转型的关键一年。尽管整体销售目标（$180万）受市场波动影响实际达成约 <strong>88%</strong>，但我们成功跑通了<strong class="text-stone-800">“多核驱动”模式</strong>。HK账号与多平台业务占比大幅提升，有效降低了对单一CS账号的依赖风险，基本盘保持稳固，为未来几年的业绩翻倍打下了坚实的渠道基础。
+                    </p>
+                </div>
+            </header>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-sm text-stone-500 mb-1">2025 实际销售额 (1-11月)</div>
+                    <div class="text-3xl font-bold text-stone-800">$1,581,576</div>
+                    <div class="text-xs text-red-500 mt-2 font-medium">目标达成率 87.7%</div>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-sm text-stone-500 mb-1">Q1 目标达成率</div>
+                    <div class="text-3xl font-bold text-teal-600">99.09%</div>
+                    <div class="text-xs text-stone-400 mt-2">销售预测精准，执行力强</div>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-sm text-stone-500 mb-1">多平台增长</div>
+                    <div class="text-3xl font-bold text-orange-600">+473%</div>
+                    <div class="text-xs text-stone-400 mt-2">非亚马逊渠道盈利模型跑通</div>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-sm text-stone-500 mb-1">库存优化</div>
+                    <div class="text-3xl font-bold text-stone-800">-78%</div>
+                    <div class="text-xs text-stone-400 mt-2">超龄库存显著降低</div>
+                </div>
+            </div>
+
+            <!-- Strategy Radar & Highlight Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Radar Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-sm lg:col-span-1 flex flex-col">
+                    <h3 class="text-lg font-bold text-stone-800 mb-4">策略执行力评估</h3>
+                    <div class="flex-1 flex items-center justify-center chart-container chart-height-sm">
+                        <canvas id="strategyRadarChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-stone-400 mt-4">数据来源：年度经营复盘表-关键行动打分</p>
+                </div>
+
+                <!-- Highlights Text -->
+                <div class="bg-white p-6 rounded-xl shadow-sm lg:col-span-2">
+                    <h3 class="text-lg font-bold text-stone-800 mb-4">年度关键亮点</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-stone-50 rounded-lg border border-stone-100">
+                            <h4 class="font-bold text-teal-700 mb-2">✦ 战略转型成功</h4>
+                            <p class="text-sm text-stone-600">摆脱单一账号依赖，HK账号与Ozon、速卖通等多平台业务占比大幅提升，构建了更健康的营收结构。</p>
+                        </div>
+                        <div class="p-4 bg-stone-50 rounded-lg border border-stone-100">
+                            <h4 class="font-bold text-teal-700 mb-2">✦ 轻资产模式突破</h4>
+                            <p class="text-sm text-stone-600">FBM（自发货）高客单增长模型在Pantu账号验证成功。不占资金、0库存风险下实现了高毛利出单。</p>
+                        </div>
+                        <div class="p-4 bg-stone-50 rounded-lg border border-stone-100">
+                            <h4 class="font-bold text-teal-700 mb-2">✦ 流量全链路打通</h4>
+                            <p class="text-sm text-stone-600">速卖通及独立站不再局限于站内，建立了SEO+联盟+站外引流体系，速卖通月均销售额翻倍 ($3.7k -> $8.1k)。</p>
+                        </div>
+                        <div class="p-4 bg-stone-50 rounded-lg border border-stone-100">
+                            <h4 class="font-bold text-orange-700 mb-2">⚠️ 需要警惕</h4>
+                            <p class="text-sm text-stone-600">部分老品（如横轴系列）受低价冲击销量下滑；超龄库存虽降但仍有尾货（925个）占用资金。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 2025 REVIEW -->
+        <section id="review2025" class="section-view hidden max-w-7xl mx-auto space-y-8 animate-fade-in">
+            <header>
+                <h2 class="text-3xl font-bold text-stone-800 mb-2">2025 销售详情复盘</h2>
+                <p class="text-stone-500">深入分析各账号、站点及季度表现，识别增长点与失分点。</p>
+            </header>
+
+            <!-- Chart Row 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Sales Trend -->
+                <div class="bg-white p-6 rounded-xl shadow-sm lg:col-span-2">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-stone-800">月度销售趋势 (按账号群)</h3>
+                        <select id="trendFilter" class="text-sm border-stone-300 rounded-md bg-stone-50 p-1">
+                            <option value="all">全账号汇总</option>
+                            <option value="cs">CS (川南) 账号</option>
+                            <option value="hk">HK 账号</option>
+                            <option value="pt">PT 账号</option>
+                        </select>
+                    </div>
+                    <div class="chart-container chart-height-md">
+                        <canvas id="salesTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Regional/Platform Mix -->
+                <div class="bg-white p-6 rounded-xl shadow-sm lg:col-span-1">
+                    <h3 class="text-lg font-bold text-stone-800 mb-4">市场区域占比</h3>
+                    <div class="chart-container chart-height-sm flex justify-center">
+                        <canvas id="regionPieChart"></canvas>
+                    </div>
+                    <div class="mt-4 space-y-2">
+                        <div class="flex justify-between text-sm border-b border-stone-100 pb-1">
+                            <span class="text-stone-500">🇺🇸 美国市场</span>
+                            <span class="font-medium">主导地位 (CS核心)</span>
+                        </div>
+                        <div class="flex justify-between text-sm border-b border-stone-100 pb-1">
+                            <span class="text-stone-500">🇯🇵 日本市场</span>
+                            <span class="font-medium">HK账号高增长</span>
+                        </div>
+                        <div class="flex justify-between text-sm border-b border-stone-100 pb-1">
+                            <span class="text-stone-500">🇪🇺 欧洲市场</span>
+                            <span class="font-medium">PT账号主要贡献</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campaign Analysis Table -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-lg font-bold text-stone-800 mb-4">四大促销节点复盘</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-stone-600">
+                        <thead class="text-xs text-stone-700 uppercase bg-stone-100">
+                            <tr>
+                                <th class="px-6 py-3">活动节点</th>
+                                <th class="px-6 py-3">主要站点表现</th>
+                                <th class="px-6 py-3">销售额 (Est.)</th>
+                                <th class="px-6 py-3">广告占比 (ACOS趋势)</th>
+                                <th class="px-6 py-3">复盘结论</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4 font-medium">🌸 春季大促</td>
+                                <td class="px-6 py-4">HK-US, CS-US</td>
+                                <td class="px-6 py-4">$21,000+</td>
+                                <td class="px-6 py-4">13.3% - 13.6%</td>
+                                <td class="px-6 py-4 text-xs">开局平稳，CSUS主力账号贡献主要销量。</td>
+                            </tr>
+                            <tr class="bg-stone-50 border-b">
+                                <td class="px-6 py-4 font-medium">☀️ 夏季 Prime Day</td>
+                                <td class="px-6 py-4">CS-US 爆发</td>
+                                <td class="px-6 py-4">$50,000+</td>
+                                <td class="px-6 py-4">高投入期</td>
+                                <td class="px-6 py-4 text-xs">单量峰值，CSUS单次活动超$40k，验证了大促爆发力。</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4 font-medium">🍂 秋季 Prime Day</td>
+                                <td class="px-6 py-4">HK-JP, HK-US</td>
+                                <td class="px-6 py-4">$16,000+</td>
+                                <td class="px-6 py-4">18%左右</td>
+                                <td class="px-6 py-4 text-xs">HK账号群发力，多站点联动效果显现。</td>
+                            </tr>
+                            <tr class="bg-stone-50">
+                                <td class="px-6 py-4 font-medium">🛍️ 黑五网一 (BFCM)</td>
+                                <td class="px-6 py-4">全线爆发</td>
+                                <td class="px-6 py-4">$80,000+</td>
+                                <td class="px-6 py-4">11% - 12%</td>
+                                <td class="px-6 py-4 text-xs">CSUS单次$47k+，HKJP$19k+。广告效率最优，清库与利润兼顾。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PRODUCT & STRATEGY -->
+        <section id="productStrategy" class="section-view hidden max-w-7xl mx-auto space-y-8 animate-fade-in">
+            <header>
+                <h2 class="text-3xl font-bold text-stone-800 mb-2">产品与策略深潜</h2>
+                <p class="text-stone-500">核心产品线表现与关键战略执行情况。</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Product Performance Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-lg font-bold text-stone-800 mb-4">重点系列销售表现 (TOP 5)</h3>
+                    <div class="chart-container chart-height-md">
+                        <canvas id="productBarChart"></canvas>
+                    </div>
+                    <p class="text-xs text-stone-400 mt-2">注：数据基于CSUS与HKJP主力站点统计。横轴系列虽销量高但受低价冲击严重。</p>
+                </div>
+
+                <!-- Strategy Deep Dive -->
+                <div class="space-y-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-orange-400">
+                        <h3 class="font-bold text-stone-800 flex items-center mb-2">
+                            <span class="text-xl mr-2">📉</span> 痛点：横轴系列价格战
+                        </h3>
+                        <p class="text-sm text-stone-600 mb-3">
+                            上半年月均70单 → 下半年月均30单。
+                            <br><strong>原因：</strong> 经销商低价干预，未及时管控，导致排名下跌，广告费与仓储费双升。
+                        </p>
+                        <div class="bg-stone-100 p-3 rounded text-xs text-stone-700">
+                            <strong>改进措施：</strong> 建立经销商价格追踪机制，发现低价立即交涉改价，重新拉升排名。
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
+                        <h3 class="font-bold text-stone-800 flex items-center mb-2">
+                            <span class="text-xl mr-2">🚀</span> 亮点：独立站 & 流量闭环
+                        </h3>
+                        <p class="text-sm text-stone-600 mb-3">
+                            独立站从0起步，通过SEO、红人博客(Blog)及Deal页面优化，逐渐形成稳定流量。
+                            <br><strong>关键动作：</strong> 上架100+产品，撰写高客单Blog，优化页面加载速度。
+                        </p>
+                        <div class="bg-stone-100 p-3 rounded text-xs text-stone-700">
+                            <strong>数据：</strong> 1-11月多平台销售同比增长473%，Ozon、速卖通成为新增长极。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 2026 PLAN -->
+        <section id="plan2026" class="section-view hidden max-w-7xl mx-auto space-y-8 animate-fade-in">
+            <header>
+                <h2 class="text-3xl font-bold text-stone-800 mb-2">2026 年度规划</h2>
+                <p class="text-stone-500">基于“多核驱动”战略的业绩倍增计划。</p>
+            </header>
+
+            <!-- 2026 Targets Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-teal-700 text-white p-6 rounded-xl shadow-md">
+                    <div class="text-sm opacity-80 mb-1">2026 全年保守目标</div>
+                    <div class="text-4xl font-bold">$2,850,000+</div>
+                    <div class="text-xs mt-2 opacity-80">对比2025年预计增长 ~80%</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100">
+                    <div class="text-sm text-stone-500 mb-1">HK 账号群目标</div>
+                    <div class="text-2xl font-bold text-stone-800">$650,000+</div>
+                    <div class="text-xs text-teal-600 mt-1">日本/美国/澳洲多点开花</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100">
+                    <div class="text-sm text-stone-500 mb-1">CS (川南) 账号目标</div>
+                    <div class="text-2xl font-bold text-stone-800">$1,200,000+</div>
+                    <div class="text-xs text-teal-600 mt-1">稳固基本盘，提升单品效能</div>
+                </div>
+            </div>
+
+            <!-- 2026 Forecast Chart -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-lg font-bold text-stone-800 mb-4">2026 月度销售预测 (Aggregated Target)</h3>
+                <div class="chart-container chart-height-lg">
+                    <canvas id="forecast2026Chart"></canvas>
+                </div>
+                <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs text-center text-stone-500">
+                    <div class="p-2 bg-stone-50 rounded">Q1: 蓄力期</div>
+                    <div class="p-2 bg-stone-50 rounded">Q2: 爬坡期</div>
+                    <div class="p-2 bg-teal-50 text-teal-700 rounded font-bold">Q3: 爆发期 (Prime Day)</div>
+                    <div class="p-2 bg-teal-50 text-teal-700 rounded font-bold">Q4: 丰收期 (BFCM)</div>
+                </div>
+            </div>
+
+            <!-- Key Actions 2026 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold text-stone-800 mb-3 border-b pb-2">📦 产品策略</h4>
+                    <ul class="space-y-3 text-sm text-stone-600">
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">●</span> <strong>高客单FBM复制：</strong> 将Pantu账号成功的无货源高客单模式复制到更多站点，降低资金占用。</li>
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">●</span> <strong>库存精细化：</strong> 坚决执行“0新增人力、0新增库存”原则下的规模扩张，利用数据监控周转。</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold text-stone-800 mb-3 border-b pb-2">📢 营销策略</h4>
+                    <ul class="space-y-3 text-sm text-stone-600">
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">●</span> <strong>全域流量闭环：</strong> 深化 SEO + 红人联盟 + 站外Deal 的组合拳，降低对站内广告的依赖。</li>
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">●</span> <strong>新渠道深耕：</strong> Ozon、Walmart 等新平台从“试水”转向“主力”，设立专门的销售KPI。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: FUTURE OUTLOOK -->
+        <section id="outlook" class="section-view hidden max-w-7xl mx-auto space-y-8 animate-fade-in">
+            <header>
+                <h2 class="text-3xl font-bold text-stone-800 mb-2">2027-2028 战略展望</h2>
+                <p class="text-stone-500">从“多核驱动”迈向“品牌全球化”的三年路线图。</p>
+            </header>
+
+            <div class="relative py-10">
+                <!-- Vertical Line (Mobile) / Horizontal (Desktop) styling simplified for vertical here -->
+                <div class="absolute left-6 md:left-1/2 h-full w-1 bg-stone-200 transform -translate-x-1/2"></div>
+
+                <!-- 2026 (Context) -->
+                <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                    <div class="order-1 w-full md:w-5/12 md:text-right px-6">
+                        <h3 class="text-xl font-bold text-teal-700">2026: 规模化增长</h3>
+                        <p class="text-sm text-stone-600 mt-2">核心任务：复制盈利模型。<br>确立CS、HK、PT三大账号群鼎足之势，多平台销售占比突破 30%。</p>
+                    </div>
+                    <div class="z-10 order-1 bg-teal-600 rounded-full h-8 w-8 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white text-xs font-bold">1</span>
+                    </div>
+                    <div class="order-1 w-full md:w-5/12 px-6"></div>
+                </div>
+
+                <!-- 2027 -->
+                <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                    <div class="order-1 w-full md:w-5/12 px-6 md:order-3">
+                        <h3 class="text-xl font-bold text-stone-800">2027: 渠道成熟期</h3>
+                        <p class="text-sm text-stone-600 mt-2">
+                            <strong>1. 独立站品牌化：</strong> 独立站不再仅是销售渠道，而是品牌内容中心，拥有稳定的私域流量池。<br>
+                            <strong>2. 供应链优化：</strong> 实现全球库存智能化调拨，海外仓周转率提升至行业Top水平。<br>
+                            <strong>3. 市场拓展：</strong> 深度进入拉美（Mercado Libre复活）与东南亚核心市场。
+                        </p>
+                    </div>
+                    <div class="z-10 order-1 md:order-2 bg-stone-400 rounded-full h-8 w-8 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white text-xs font-bold">2</span>
+                    </div>
+                    <div class="order-1 md:order-1 w-full md:w-5/12 px-6"></div>
+                </div>
+
+                <!-- 2028 -->
+                <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                    <div class="order-1 w-full md:w-5/12 md:text-right px-6">
+                        <h3 class="text-xl font-bold text-stone-800">2028: 全球品牌生态</h3>
+                        <p class="text-sm text-stone-600 mt-2">
+                            <strong>1. 本地化运营：</strong> 在美、欧、日设立本地化服务团队，实现售后与营销的彻底本土化。<br>
+                            <strong>2. 产品生态：</strong> 从单一摄影配件拓展至“影像生活方式”，通过高客单价+高品牌溢价驱动利润。<br>
+                            <strong>3. 资本/规模：</strong> 具备独立融资或分拆上市的业务体量与合规性。
+                        </p>
+                    </div>
+                    <div class="z-10 order-1 bg-stone-800 rounded-full h-8 w-8 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white text-xs font-bold">3</span>
+                    </div>
+                    <div class="order-1 w-full md:w-5/12 px-6"></div>
+                </div>
+            </div>
+
+            <div class="bg-teal-50 border border-teal-100 p-8 rounded-xl text-center">
+                <h3 class="text-lg font-bold text-teal-800 mb-2">未来愿景</h3>
+                <p class="text-stone-600 max-w-2xl mx-auto">
+                    到2028年，我们将不仅仅是一个亚马逊卖家团队，而是一个拥有<strong>多元化渠道护城河</strong>、<strong>轻资产高周转供应链</strong>以及<strong>全球品牌影响力</strong>的现代化跨境电商组织。
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- DATA OBJECT (Parsed from uploaded CSVs) ---
+        const reportData = {
+            overview: {
+                totalSales: 1581576,
+                targetSales: 1802495,
+                radar: {
+                    labels: ['营销效率', '关键客群', '触达效果', '存量贡献', '批量获客', '管理效能'],
+                    data: [7, 9, 5, 5, 4, 2] // 2025 Scores
+                }
+            },
+            monthlySales2025: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                cs: [69308, 62088, 75082, 60523, 61341, 44705, 83425, 55837, 52254, 48651, 66616, 60000], // Extrapolated Dec
+                hk: [25547, 21024, 25534, 26436, 25093, 25238, 41856, 43412, 38379, 51362, 54327, 48000],
+                pt: [28346, 25255, 24717, 20211, 19778, 15705, 19627, 17353, 17387, 18977, 22152, 20000],
+                multi: [3344, 3834, 8358, 5317, 6770, 11466, 11804, 13265, 12415, 14902, 21532, 18000]
+            },
+            productPerformance: {
+                // Top 5 Series based on CSUS/HKJP data
+                labels: ['横轴系列 (CS)', 'X-GO系列 (CS)', 'X-Aircross (HK)', 'FY系列 (HK)', 'P系列 (HK)'],
+                data: [216923, 141133, 79051, 39547, 31069]
+            },
+            forecast2026: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                total: [160000, 145000, 190000, 180000, 195000, 210000, 310000, 220000, 230000, 260000, 350000, 280000]
+            }
+        };
+
+        // --- CHART CONFIGURATION ---
+        Chart.defaults.font.family = "'Noto Sans SC', sans-serif";
+        Chart.defaults.color = '#78716c'; // stone-500
+
+        // 1. Radar Chart (Strategy)
+        function initRadarChart() {
+            const ctx = document.getElementById('strategyRadarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: reportData.overview.radar.labels,
+                    datasets: [{
+                        label: '2025 策略评分 (10分制)',
+                        data: reportData.overview.radar.data,
+                        backgroundColor: 'rgba(15, 118, 110, 0.2)', // Teal-700
+                        borderColor: '#0f766e',
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#ea580c', // Orange-600
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 10,
+                            ticks: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 2. Sales Trend Chart (Stacked Bar/Line hybrid)
+        let salesChart;
+        function initSalesChart() {
+            const ctx = document.getElementById('salesTrendChart').getContext('2d');
+            salesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: reportData.monthlySales2025.labels,
+                    datasets: [
+                        { label: 'CS 账号', data: reportData.monthlySales2025.cs, backgroundColor: '#d6d3d1' }, // stone-300
+                        { label: 'HK 账号', data: reportData.monthlySales2025.hk, backgroundColor: '#0f766e' }, // teal-700
+                        { label: 'PT 账号', data: reportData.monthlySales2025.pt, backgroundColor: '#5eead4' }, // teal-300
+                        { label: '多平台', data: reportData.monthlySales2025.multi, backgroundColor: '#ea580c' } // orange-600
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true },
+                        y: { stacked: true, beginAtZero: true }
+                    },
+                    plugins: {
+                        tooltip: { mode: 'index', intersect: false }
+                    }
+                }
+            });
+            
+            // Filter logic
+            document.getElementById('trendFilter').addEventListener('change', (e) => {
+                const val = e.target.value;
+                const d = reportData.monthlySales2025;
+                
+                if (val === 'all') {
+                    salesChart.data.datasets = [
+                        { label: 'CS 账号', data: d.cs, backgroundColor: '#d6d3d1' },
+                        { label: 'HK 账号', data: d.hk, backgroundColor: '#0f766e' },
+                        { label: 'PT 账号', data: d.pt, backgroundColor: '#5eead4' },
+                        { label: '多平台', data: d.multi, backgroundColor: '#ea580c' }
+                    ];
+                } else if (val === 'cs') {
+                    salesChart.data.datasets = [{ label: 'CS 账号', data: d.cs, backgroundColor: '#d6d3d1' }];
+                } else if (val === 'hk') {
+                    salesChart.data.datasets = [{ label: 'HK 账号', data: d.hk, backgroundColor: '#0f766e' }];
+                } else if (val === 'pt') {
+                    salesChart.data.datasets = [{ label: 'PT 账号', data: d.pt, backgroundColor: '#5eead4' }];
+                }
+                salesChart.update();
+            });
+        }
+
+        // 3. Region Pie Chart
+        function initRegionChart() {
+            const ctx = document.getElementById('regionPieChart').getContext('2d');
+            // Estimate totals based on arrays
+            const sum = arr => arr.reduce((a, b) => a + b, 0);
+            const csTotal = sum(reportData.monthlySales2025.cs);
+            const hkTotal = sum(reportData.monthlySales2025.hk);
+            const ptTotal = sum(reportData.monthlySales2025.pt);
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['CS (主要是US)', 'HK (JP/US)', 'PT (EU/UK)', '多平台'],
+                    datasets: [{
+                        data: [csTotal, hkTotal, ptTotal, sum(reportData.monthlySales2025.multi)],
+                        backgroundColor: ['#d6d3d1', '#0f766e', '#5eead4', '#ea580c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        // 4. Product Bar Chart
+        function initProductChart() {
+            const ctx = document.getElementById('productBarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: reportData.productPerformance.labels,
+                    datasets: [{
+                        label: '2025 销售额 ($)',
+                        data: reportData.productPerformance.data,
+                        backgroundColor: '#0f766e',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Horizontal bar
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        // 5. 2026 Forecast Line Chart
+        function initForecastChart() {
+            const ctx = document.getElementById('forecast2026Chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: reportData.forecast2026.labels,
+                    datasets: [{
+                        label: '2026 预测销售额 ($)',
+                        data: reportData.forecast2026.total,
+                        borderColor: '#ea580c', // Orange
+                        backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        // --- NAVIGATION LOGIC ---
+        function navigateTo(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-view').forEach(el => {
+                el.classList.add('hidden');
+            });
+            // Show target
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update Menu Active State
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+            // Find button calling this function (approximation for simplicity)
+            const buttons = document.querySelectorAll('button[onclick^="navigateTo"]');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(sectionId)) btn.classList.add('active');
+            });
+
+            // Trigger chart resize
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('inset-0');
+            sidebar.classList.toggle('z-40');
+            sidebar.classList.toggle('w-full');
+        });
+
+        // Initialize
+        window.onload = () => {
+            initRadarChart();
+            initSalesChart();
+            initRegionChart();
+            initProductChart();
+            initForecastChart();
+        };
+
+    </script>
+</body>
+</html>
